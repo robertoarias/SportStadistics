@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pasion por el Ascenso</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="css/theme.css">
+
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="keywords" content="sortable, reorder, list, javascript, html5, drag and drop, dnd, animation, groups, dnd, sortableJS"/>
+	<meta name="description" content="Sortable — is a JavaScript library for reorderable drag-and-drop lists on modern browsers and touch devices. No jQuery required. Supports Meteor, AngularJS, React, Polymer, Vue, Knockout and any CSS library, e.g. Bootstrap."/>
+	<meta name="viewport" content="width=device-width, initial-scale=0.5"/>
+</head>
+<body>
+
+	<div class="container">
+		<div class="text-center row header">
+			
+			<img class="mx-auto d-block" src="images/PxA_logo.png" style="max-width: 200px; max-height: 200px" />
+			<h1 class="col-12">Pasión Por El Ascenso</h1>
+
+			<div class="toc col-12 col-md-5 mt-3">
+				<h5>Caracteristicas</h5>
+				<li><a href="#simple-list">Lista Simple</a></li>
+				<li><a href="#shared-lists">Lista Doble</a></li>
+				<li><a href="#cloning">Clonado</a></li>
+				<h5>Ejemplos</h5>
+				<li><a href="#grid">Grillas</a></li>
+				<li><a href="#nested">Listas Anidadas</a></li>
+			</div>
+			
+		</div>
+
+
+		<div class="row">
+			<h2 class="col-12">Caracteristicas</h2>
+		</div>
+		<hr />
+		<div id="simple-list" class="row">
+			<h4 class="col-12">Ejemplo de Lista Simple</h4>
+			<div id="example1" class="list-group col">
+				<div class="list-group-item">
+				   <table  style="width:100%">
+						<tr>
+							<td align="left" colspan="1" width="14%">
+								<label>Gral. Paz Juniors</label>
+							</td>
+							<td align="left" colspan="1" width="4%">
+								<img class="mx-auto d-block" src="images/Gral_Paz_Juniors.png" style="max-width: 200px; max-height: 200px" />
+							</td>
+							<td align="left" colspan="1" width="82%">
+								<label></label>
+							</td>
+						</tr>
+				   </table>
+				</div>
+				<div class="list-group-item">
+				   <table  style="width:100%">
+						<tr>
+							<td align="left" colspan="1" width="14%">
+								<label>Union San Vicente</label>
+							</td>
+							<td align="left" colspan="1" width="4%">
+								<img class="mx-auto d-block" src="images/Union_San_Vicente.png" style="max-width: 200px; max-height: 200px" />
+							</td>
+							<td align="left" colspan="1" width="82%">
+								<label></label>
+							</td>
+						</tr>
+				   </table>
+				</div>
+				<div class="list-group-item">
+				   <table  style="width:100%">
+						<tr>
+							<td align="left" colspan="1" width="14%">
+								<label>Argentino Peñarol</label>
+							</td>
+							<td align="left" colspan="1" width="4%">
+								<img class="mx-auto d-block" src="images/Argentino_Peñarol.png" style="max-width: 200px; max-height: 200px" />
+							</td>
+							<td align="left" colspan="1" width="82%">
+								<label></label>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<hr />
+
+
+		<div id="shared-lists" class="row">
+			<h4 class="col-12">Ejemplo de Lista Doble</h4>
+			<div id="example2-left" class="list-group col">
+				<div class="list-group-item">
+				   <table  style="width:100%">
+						<tr>
+							<td align="left" colspan="1" width="34%">
+								<label>Gral. Paz Juniors</label>
+							</td>
+							<td align="left" colspan="1" width="4%">
+								<img class="mx-auto d-block" src="images/Gral_Paz_Juniors.png" style="max-width: 200px; max-height: 200px" />
+							</td>
+							<td align="left" colspan="1" width="62%">
+								<label></label>
+							</td>
+						</tr>
+				   </table>
+				</div>
+				<div class="list-group-item">
+				   <table  style="width:100%">
+						<tr>
+							<td align="left" colspan="1" width="34%">
+								<label>Union San Vicente</label>
+							</td>
+							<td align="left" colspan="1" width="4%">
+								<img class="mx-auto d-block" src="images/Union_San_Vicente.png" style="max-width: 200px; max-height: 200px" />
+							</td>
+							<td align="left" colspan="1" width="62%">
+								<label></label>
+							</td>
+						</tr>
+				   </table>
+				</div>
+				<div class="list-group-item">
+				   <table  style="width:100%">
+						<tr>
+							<td align="left" colspan="1" width="34%">
+								<label>Argentino Peñarol</label>
+							</td>
+							<td align="left" colspan="1" width="4%">
+								<img class="mx-auto d-block" src="images/Argentino_Peñarol.png" style="max-width: 200px; max-height: 200px" />
+							</td>
+							<td align="left" colspan="1" width="62%">
+								<label></label>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+
+			<div id="example2-right" class="list-group col">
+				<div class="list-group-item">
+				   <table  style="width:100%">
+						<tr>
+							<td align="left" colspan="1" width="34%">
+								<label>Atl. Carlos Paz</label>
+							</td>
+							<td align="left" colspan="1" width="4%">
+								<img class="mx-auto d-block" src="images/Atl_Carlos_Paz.png" style="max-width: 200px; max-height: 200px" />
+							</td>
+							<td align="left" colspan="1" width="62%">
+								<label></label>
+							</td>
+						</tr>
+				   </table>
+				</div>
+				<div class="list-group-item">
+				   <table  style="width:100%">
+						<tr>
+							<td align="left" colspan="1" width="34%">
+								<label>Barrio Parque</label>
+							</td>
+							<td align="left" colspan="1" width="4%">
+								<img class="mx-auto d-block" src="images/Barrio_Parque.png" style="max-width: 200px; max-height: 200px" />
+							</td>
+							<td align="left" colspan="1" width="62%">
+								<label></label>
+							</td>
+						</tr>
+				   </table>
+				</div>
+				<div class="list-group-item">
+				   <table  style="width:100%">
+						<tr>
+							<td align="left" colspan="1" width="34%">
+								<label>Racing</label>
+							</td>
+							<td align="left" colspan="1" width="4%">
+								<img class="mx-auto d-block" src="images/Racing.png" style="max-width: 200px; max-height: 200px" />
+							</td>
+							<td align="left" colspan="1" width="62%">
+								<label></label>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<hr />
+
+		
+		<div id="cloning" class="row">
+			<h4 class="col-12">Clonado</h4>
+			<div id="example3-left" class="list-group col">
+				<div class="list-group-item">Gral. Paz Juniors</div>
+				<div class="list-group-item">Union San Vicente</div>
+				<div class="list-group-item">Dep. Atalaya</div>
+				<div class="list-group-item">Libertad</div>
+				<div class="list-group-item">Escuela Pte. Roca</div>
+				<div class="list-group-item">Las Palmas</div>
+			</div>
+
+			<div id="example3-right" class="list-group col">
+				<div class="list-group-item tinted">Argentino Peñarol</div>
+				<div class="list-group-item tinted">Racing</div>
+				<div class="list-group-item tinted">Talleres</div>
+				<div class="list-group-item tinted">Instituto</div>
+				<div class="list-group-item tinted">Belgrano</div>
+				<div class="list-group-item tinted">Almirante Brown</div>
+			</div>
+		</div>
+		<hr />
+
+
+		<div class="row">
+			<h2 class="col-12">Ejemplos</h2>
+		</div>
+		<hr />
+		
+		<div id="grid" class="row">
+			<h4 class="col-12">Ejemplo de Grillas</h4>
+
+			<h5 class="col-12">Primera A</h5>
+
+			<div id="gridDemo" class="col">
+				<div class="grid-square">Gral. Paz Juniors
+					<img class="mx-auto d-block" src="images/Gral_Paz_Juniors.png" style="max-width: 200px; max-height: 200px" />
+				</div>
+				<div class="grid-square">Union San Vicente
+					<img class="mx-auto d-block" src="images/Union_San_Vicente.png" style="max-width: 200px; max-height: 200px" />
+				</div>
+				<div class="grid-square">Argentino Peñarol
+					<img class="mx-auto d-block" src="images/Argentino_Peñarol.png" style="max-width: 200; max-height: 200px" />
+				</div>
+				<div class="grid-square">Atl. Carlos Paz
+					<img class="mx-auto d-block" src="images/Atl_Carlos_Paz.png" style="max-width: 200; max-height: 200px" />
+				</div>
+				<div class="grid-square">Barrio Parque
+					<img class="mx-auto d-block" src="images/Barrio_Parque.png" style="max-width: 200; max-height: 200px" />
+				</div>
+			</div>
+		</div>
+		<hr />
+
+		<div id="nested" class="row">
+			<h4 class="col-12">Ejemplo de Listas Anidadas</h4>
+			<div id="nestedDemo" class="list-group col nested-sortable">
+				<div class="list-group-item nested-1">Masculino
+					<div class="list-group nested-sortable">
+						<div class="list-group-item nested-2">Primera A
+							<div class="list-group nested-sortable">
+								<div class="list-group-item nested-3">Gral. Paz Juniors</div>
+								<div class="list-group-item nested-3">Union San Vicente</div>
+								<div class="list-group-item nested-3">Las Palmas</div>
+								<div class="list-group-item nested-3">Racing</div>
+							</div>
+						</div>
+						<div class="list-group-item nested-2">Primera B
+							<div class="list-group nested-sortable">
+								<div class="list-group-item nested-3">Los Andes</div>
+								<div class="list-group-item nested-3">Bella Vista</div>
+								<div class="list-group-item nested-3">Dep. Lasallano</div>
+								<div class="list-group-item nested-3">Calera Central</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="list-group-item nested-1">Femenino
+					<div class="list-group nested-sortable">
+						<div class="list-group-item nested-2">Primera A
+							<div class="list-group nested-sortable">
+								<div class="list-group-item nested-3">Gral. Paz Juniors</div>
+								<div class="list-group-item nested-3">Talleres</div>
+								<div class="list-group-item nested-3">Belgrano</div>
+								<div class="list-group-item nested-3">Dep. Alberdi</div>
+							</div>
+						</div>
+						<div class="list-group-item nested-2">Primera B
+							<div class="list-group nested-sortable">
+								<div class="list-group-item nested-3">Atl. Carlos Paz</div>
+								<div class="list-group-item nested-3">Union Florida</div>
+								<div class="list-group-item nested-3">Defensores Central Cordoba</div>
+								<div class="list-group-item nested-3">Villa Siburu</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="list-group-item nested-1">Futsal
+					<div class="list-group nested-sortable">
+						<div class="list-group-item nested-2">Primera
+							<div class="list-group nested-sortable">
+								<div class="list-group-item nested-3">Los Andes</div>
+								<div class="list-group-item nested-3">Catania</div>
+								<div class="list-group-item nested-3">Torino</div>
+								<div class="list-group-item nested-3">Macabi Noar</div>
+							</div>
+						</div>
+						<div class="list-group-item nested-2">Reserva
+							<div class="list-group nested-sortable">
+								<div class="list-group-item nested-3">Carlos Paz</div>
+								<div class="list-group-item nested-3">Banfield</div>
+								<div class="list-group-item nested-3">UGAB</div>
+								<div class="list-group-item nested-3">UPC</div>
+							</div>
+						</div>
+						<div class="list-group-item nested-2">Femenino
+							<div class="list-group nested-sortable">
+								<div class="list-group-item nested-3">Carlos Paz</div>
+								<div class="list-group-item nested-3">Los Andes</div>
+								<div class="list-group-item nested-3">Argentino Peñarol</div>
+								<div class="list-group-item nested-3">UPC</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div style="padding: 0" class="col-12">
+			</div>
+		</div>
+
+		<hr />
+	</div>
+
+
+	<!-- Latest Sortable -->
+	<script src="js/Sortable.js"></script>
+
+	<script type="text/javascript" src="js/prettify/prettify.js"></script>
+	<script type="text/javascript" src="js/prettify/run_prettify.js"></script>
+
+	<script src="js/app.js"></script>
+</body>
+</html>

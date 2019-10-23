@@ -1,0 +1,55 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+	<head>
+		<div th:fragment="header-css">
+		</div>
+	</head>
+	<body>
+	
+		<nav class="navbar navbar-default" >
+			<div  th:fragment="header" class="container-fluid">
+			
+				<div class="navbar-header">
+					<h1 class="navbar-brand section-header-title">Sports | <small class="white" th:text="${tituloPantalla}"></small></h1>					
+				</div>
+				<div class="col-md-2 extraClass">
+				<ul class="nav navbar-nav navbar-right" >
+					<li sec:authorize="isAuthenticated()">					
+						
+						<table>
+						
+							<tr>
+								<td style="width:400px;">
+						<img class="img-circle" th:src="${userPic}" style="height:52px;width:52px;"/>
+						<span  th:remove="tag"><span class="awhite" sec:authentication="name"></span> </span>									
+								</td>
+								
+								<td>
+						<form action="#" th:action="@{/logout}" method="post">
+							
+							<!-- 
+							<span class="glyphicon glyphicon-user white"></span><span  th:remove="tag"><span class="awhite" sec:authentication="name"></span> </span>
+							-->
+							<!-- 
+							<img th:src="${userPic}" class="rounded-circle img-fluid img-thumbnail float-right" style="height:52px;width:52px;"/><span  th:remove="tag"><span class="awhite" sec:authentication="name"></span> </span>
+							-->
+											
+							<button type="button" class="btn btn-link awhite" onclick="submit()"><span class="glyphicon glyphicon-log-out white"></span> <span th:remove="tag">Salir</span>	</button>		
+      						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                		</form>
+								
+								</td>
+								
+							</tr>
+						
+						</table>
+
+					</li>						
+				</ul>
+				</div>
+			</div>
+		</nav> 
+	
+ 
+	</body>
+</html>

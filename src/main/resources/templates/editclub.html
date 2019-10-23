@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <link rel="icon" href="images/favicon.ico"/>
+
+    <title>Creacion de Club</title>
+
+    <!-- Bootstrap core CSS -->
+	<link href="css/bootstrap.min_new.css" rel="stylesheet"/>
+	<link href="css/calendario.css" rel="stylesheet"/>
+	<link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet"/>
+   	<link href="css/bootstrap-dialog.min.css" rel="stylesheet"/>
+   	<link href="css/sportsgestor/sportsgestor.css" rel="stylesheet"/>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet"/>
+
+    <!-- JS -->
+    <script src="js/ie-emulation-modes-warning.js"></script>	
+	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap-datetimepicker.min.js"></script>
+	<script src="js/bootstrap-datetimepicker.es.js"></script>
+   	<script type="text/javascript" src="js/bootstrap-dialog.js"></script>
+	<script type="text/javascript" src="js/editClub.js"></script>
+
+	<style>
+		.fa {
+			display: inline-block;
+			font-family: FontAwesome;
+			font-feature-settings: normal;
+			font-kerning: auto;
+			font-language-override: normal;
+			font-size: inherit;
+			font-size-adjust: none;
+			font-stretch: normal;
+			font-style: normal;
+			font-synthesis: weight style;
+			font-variant: normal;
+			font-weight: normal;
+			line-height: 1;
+			text-rendering: auto;
+			transform: translate(0px, 0px);
+		}
+		
+		.fa-spin {
+			animation: 2s linear 0s normal none infinite running fa-spin;
+		}
+		
+		.savePreloader i.fa {
+			color: #00aeef;
+		}
+	</style>
+	
+</head>
+<body >
+
+	<div th:replace="/fragments/header :: header"/>
+
+	<div class="container">
+
+
+		<form action="#" data-th-action="@{/editclub}"  th:object="${club_bean}" enctype="multipart/form-data" method="post" name="clubForm" id="clubForm">
+			<input type="hidden" name="isModif" id="isModif"  th:value="${modifOk}"/>
+			<!-- <input type="hidden" name="numberCheck" id="numberCheck" th:field="*{numberOfSubsChecked}" /> -->
+			
+			
+			
+			<div class="row" >
+					
+				<div class="form-group col-lg-2" th:if="${modifOk}">
+					<label for="id">Id Club</label>
+					<input type="text" readonly="readonly" th:field="*{club_id}" class="form-control" id="idClub" name="idClub" th:value="${idClub}"></input>
+				</div>
+				
+				<div class="form-group col-lg-4" >
+					<label for="externalName">Nombre de Club <small  id="remname" name="remname" th:unless="${modifOk}">0/250</small></label>
+					<input type="text" th:field="*{nombre_club}" th:readonly="${modifOk}" class="form-control" name="nombreClub" th:value="${nombreClub}" id="nombreClub" />
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<button type="button" class="btn btn-primary" name="enviar" id="enviar">Guardar</button>				
+				<button type="button" class="btn btn-primary" id="cancelar"  onclick="location.href='/SportsGestor';" name="cancelar">Cancelar</button>				
+            </div>
+			<div id="loadclub" class="form-group savePreloader" style="display: none;">
+				<i class="fa fa-spinner fa-spin"></i>&nbsp;&nbsp;Procesando...
+            </div>
+			<div id="resultadook" class="form-group savePreloader" style="display: none; color: grren !important;">
+				<i class="fa fa-check-circle"></i>&nbsp;&nbsp;
+				<div id="resultadoOkMsg"></div>
+            </div>
+			<div id="resultadoerror" class="form-group savePreloader" style="display: none; color: red !important;">
+				<i class="fa fa-exclamation-triangle" style="color: red !important;"></i>&nbsp;&nbsp;Se produjo un error al procesar el club
+				<div id="resultadoErrorMsg"></div>
+            </div>
+			
+		</form>
+    </div>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+
+		
+	<div id="status" name="status" th:if="${witherror}">
+		<script th:inline="javascript">
+		/*<![CDATA[*/
+			var mess = "Estado: ";
+			mess +=[[${statusMessage}]];
+		
+			BootstrapDialog.show({
+	        	title: 'Error procesando club ',
+	        	message: mess,
+	        	animate: false,
+	        	buttons: [{
+	            	label: 'Ok',		                
+	            	action: function(dialog) {
+	            		dialog.close();
+	            	}
+	        	}]
+	    	});	
+		/*]]>*/
+		</script>
+	</div>
+			
+	<div id="status" name="status" th:if="${statusOk}">
+		<script th:inline="javascript">
+		/*<![CDATA[*/
+			var mess = "Estado: ";
+			mess +=[[${statusMessage}]];
+
+			BootstrapDialog.show({
+	        	title: 'Nuevo Club',
+	        	message: mess,
+	        	animate: false,
+	        	buttons: [{
+	            	label: 'Ok',		                
+	            	action: function(dialog) {
+	            		dialog.close();
+	            	}
+	        	}]
+	    	});	
+		/*]]>*/
+		</script>
+	</div>
+	
+	<!-- <div th:replace="fragments/footer :: footer"/> -->
+  </body>
+  
+</html>

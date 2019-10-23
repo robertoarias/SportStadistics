@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>Sports - Gestion de Ligas - Login</title>
+        <link rel="icon" href="images/favicon.ico"/>
+        <link href="css/login.css" rel="stylesheet"/> 
+        <link href="css/bootstrap.min_new.css" rel="stylesheet"/>
+    </head>
+    <body>
+		<div class="container">
+		
+	    		
+	    	<div class="card card-container">
+	    			<div class="panel-heading">                                
+                                <div class="row-fluid user-row">
+                                    <img src="images/logo_futbol.png" class="img-responsive" alt="Futbol logo"/>
+                                </div>
+                            </div>
+	    	
+	    			<h3>Login</h3>
+	    			<h6>Ingrese sus credenciales para continuar</h6>
+	    			<div class="panel-heading">
+	    		</div>
+	        	<div th:if="${param.error}">
+	        		<p class="text-danger">Usuario o password invalidos</p>
+	        	</div>
+	        <div th:if="${param.logout}">
+	           	<p class="text-success">Sesion finalizada.</p>
+	        </div>
+			<form class="form-signin" th:action="@{/login}" method="post">
+	        	<span id="reauth-email" class="reauth-email"></span>
+	        	<input type="text" id="username" name="username" class="form-control" placeholder="Usuario" required="true" autofocus="true"/>
+	        	<input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" required="true"/>          
+	        	<button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Iniciar Sesión</button>
+	        </form><!-- /form -->           
+	        </div><!-- /card-container -->
+	    </div><!-- /container -->
+	    <div th:replace="fragments/footer :: footer"/>
+    </body>
+</html>
+
+

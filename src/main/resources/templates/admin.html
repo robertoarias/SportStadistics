@@ -1,0 +1,145 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+		<!-- <div th:replace="/fragments/header :: header-css"/>-->
+	<head>	
+	    <title>Sports - Administracion de usuarios</title>
+	    <link rel="icon" href="images/favicon.ico"/>
+	    
+	    	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	    
+   			<link rel="stylesheet" type="text/css" href="css/bootstrap.min_new.css" />
+			<link rel="stylesheet" type="text/css" href="css/dataTables.bootstrap.min.css" />			
+			<link rel="stylesheet" type="text/css" href="css/sportsgestor/sportsgestor.css" />			
+			<link rel="stylesheet" type="text/css" href="css/bootstrap-dialog.min.css" /> 
+		
+		
+		   <!-- JS -->
+			<script src="js/jquery.js" type="text/javascript"></script>
+			<script src="js/bootstrap.min.js"></script>
+			<script src="js/bootstrap-dialog.js" type="text/javascript"></script>
+			<script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
+			<script src="js/moment.min.js" type="text/javascript"></script>
+			<script src="js/datetime-moment.js" type="text/javascript"></script>
+			<script src="js/dataTables.bootstrap.min.js" type="text/javascript"></script>
+			<script type="text/javascript" src="js/admin.js"></script>
+			
+	</head>
+	<body>
+		<div th:replace="/fragments/header :: header"> </div>
+		
+		
+		<div class="row">
+	  		<div class="container" id="masterDiv" name="masterDiv">
+	
+				<div class="container toolbar" th:if="${showChange}">
+					<div class="row justify-content-sm-left">
+						<div class="col-sm-2  ">
+							<form action="#" data-th-action="@{/changepass}" th:object="${admin_bean}" method="get" name="changeForm" id="changeForm">
+								<div class="form-group">
+									<span class="pull-left"><button type="button" class="btn btn-link" name="bchangePass" id="bchangePass"><span class="glyphicon glyphicon-retweet"> </span>  Modificar Password Admin</button></span>
+								</div>
+							</form> 	
+												
+						</div>
+					</div>
+				</div>
+	
+	  			<div class="container">
+					<table class="table table-condensed table-hover">
+		        		<thead>
+		            		<tr> 
+		                		<th class="tg">Usuario</th> 
+		                		<th class="tg">Rol</th>                             
+		            		</tr>
+		        		</thead>    
+		        		<tbody>
+		            		<tr th:each="row : ${userRolesMap}"> 
+		                		<td class="tg bg" th:text="${row.key}"></td> 
+		                		<td class="tg bg" th:text="${row.value}"></td> 
+		            		</tr> 
+		        		</tbody>
+		    		</table>
+		    
+		    		<form action="#" data-th-action="@{/admintools}" th:object="${admin_bean}" method="get" name="adminForm" id="adminForm">
+		    			<input type="hidden" id="adminAction" th:field="*{action}" value=""></input>		
+		    			<div class="form-group">
+		  					<label for="usr">Usuario:</label>
+		  					<input type="text" name="adminUser" id="adminUser" th:field="*{userId}" class="form-control" ></input>
+						</div>				
+						<div class="form-group">
+		  					<label for="usr">Rol:</label>
+		  					<select class="form-control" name="rolesOpt"  th:field="*{roleId}" id="rolesOpt" >
+		  						<option  th:each="rol : ${rolesList}" th:value="${rol.getRole_id()}" th:text="|${rol.getRole_name()} - ${rol.getRole_description()}|"></option>
+							</select>  					
+						</div>
+							
+						<div class="form-group">
+							<button type="button" class="btn btn-primary" name="adminNewModif" id="adminNewModif">Agregar/Editar</button>
+							<button type="button" class="btn btn-primary" name="adminBorrar" id="adminBorrar">Borrar</button>				
+							<button type="button"  th:if="${showVolver}" onclick="location.href='/CampaignFrontEnd';" class="btn btn-primary" name="adminVolver" id="adminVolver">Volver</button>
+						</div>
+					</form> 	
+	        	</div>
+	       	</div>
+       	</div>
+
+		<div class="container" id="changeDiv" name="changeDiv" style="visibility:hidden">
+    		<form action="#" data-th-action="@{/changepass}" th:object="${admin_bean}" method="post" name="changepassForm" id="changepassForm">
+    			<input type="hidden" id="adminPass" th:field="*{password}" value=""></input>		
+				<div class="row">			
+					<h3>Cambio de password</h3>
+				</div>
+				<div class="row">			
+					<div class="form-group col-lg-4" >
+						<label for="newpass">Nuevo Password: <small  id="remname" name="remname">0/10</small></label>
+						<input type="password" name="newpass" id="newpass" class="form-control"></input>
+					</div>
+				</div>
+				<div class="row">			
+					<div class="form-group col-lg-4" >
+						<label for="newpass">Confirmar Nuevo Password: <small  id="remnameConfirm" name="remnameConfirm">0/10</small></label>
+						<input type="password" name="newpassConfirm" id="newpassConfirm" class="form-control"></input>
+					</div>
+				</div>
+				<div class="row">			
+					<button type="button" class="btn btn-primary" name="guardarChangePass" id="guardarChangePass">Guardar</button>
+					<button type="button" class="btn btn-primary" name="closeChangePass" id="closeChangePass">Cerrar</button>
+				</div>
+			</form> 	
+		</div>
+    
+    	<div id="status" name="status" th:if="${witherror}">
+				<script th:inline="javascript">
+					BootstrapDialog.show({
+						title: 'Error administrando roles ',
+						message: 'No se puede modificar el rol del usuario que esta logueado.',
+						animate: false,
+						buttons: [{
+							label: 'Ok',		                
+							action: function(dialog) {
+								var userTxt = document.getElementById('adminUser');
+								userTxt.value="";																
+								dialog.close();
+							}
+						}]
+					});	
+				</script>
+		</div>
+
+    	<div id="statusOk" name="statusOk" th:if="${modifOk}">
+				<script th:inline="javascript">
+					BootstrapDialog.show({
+						title: 'Modificacion exitosa ',
+						message: 'Se ha modificado el password de administrador.',
+						animate: false,
+						buttons: [{
+							label: 'Ok',		                
+							action: function(dialog) {
+								dialog.close();
+							}
+						}]
+					});	
+				</script>
+		</div>
+    
+		</body>
+		</html>
