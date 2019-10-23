@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<link href="css/bootstrap.min_new.css" rel="stylesheet"/>
+		<link href="css/sportsgestor/sportsgestor.css" rel="stylesheet"/>
+		<link href="css/login.css" rel="stylesheet"/> 
+		   		
+		<!-- <link rel="stylesheet" type="text/css" href="css/style.css" /> -->
+
+  		<link rel="icon" href="images/favicon.ico"/>
+ 		<title>Sports - Error</title>
+			
+	</head>
+
+<body>
+
+
+	<nav class="navbar navbar-default" >
+			<div  th:fragment="header" class="container-fluid">
+			
+				<div class="navbar-header">
+					<h1 class="navbar-brand section-title" style="color:white">Sports | <small class="white" style="font-family: 'Roboto', sans-serif;" >Error</small></h1>					
+				</div>
+				<div class="col-md-2 extraClass">
+				<ul class="nav navbar-nav navbar-right" >
+					<li>					
+						<a class="awhite" style="color:white" href="login">						
+							<span th:remove="tag">Volver</span>	
+						</a>
+					</li>						
+												
+				</ul>
+</div>
+			</div>
+		</nav> 
+		
+			<div class="card card-container">	    	
+	    			<h3>No esta autorizado a ver esta pagina.</h3>
+	    			<h6>Contactese con el administrador para requerir los permisos correspondientes</h6>
+	    			
+	        </div><!-- /card-container -->
+</body>
+</html>
