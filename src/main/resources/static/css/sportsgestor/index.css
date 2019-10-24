@@ -1,0 +1,108 @@
+td.highlight {
+    background-color: whitesmoke !important;
+}
+
+
+.modal-width {
+	width: 80%;
+
+}
+
+
+.modal-dialog {
+  width: 50%;
+ /* overflow: hidden; 
+ text-overflow: ellipsis; 
+  white-space: nowrap;*/
+}
+.modal-wide .modal-body {
+  overflow-y: auto;
+}
+
+
+@media (min-width: 768px) {
+.custom-width{
+    width:600px;
+}}
+
+@media (min-width: 992px) {
+.custom-width{
+    width:720px;
+}}
+
+@media (min-width: 1200px) {
+.custom-width{
+    width:1040px;
+}}
+
+.acciones{
+	margin-left: 20px;
+}
+
+td {
+	max-width: 200px;
+    overflow: hidden;
+    
+ }
+    
+.borrado {
+	color:#AAAAAA;
+}
+
+.toolbar
+{
+	width: 100%;
+    border-bottom: 1px solid;
+    margin-bottom: 10px;
+}
+
+.dropdown-menu>li>a {
+    color:#428bca;
+}
+
+.dropdown-menu>li>a:hover {
+	text-decoration: underline;
+}
+
+.dropdown ul.dropdown-menu:before {
+    content: "";
+    border-bottom: 10px solid #fff;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    position: absolute;
+    top: -10px;
+    right: 16px;
+    z-index: 10;
+}
+
+.dropdown ul.dropdown-menu:after {
+    content: "";
+    border-bottom: 12px solid #ccc;
+    border-right: 12px solid transparent;
+    border-left: 12px solid transparent;
+    position: absolute;
+    top: -12px;
+    right: 14px;
+    z-index: 9;
+}
+
+td.details-control {
+    background: url('/CampaignFrontEnd/images/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+
+tr.shown td.details-control {
+    background: url('/CampaignFrontEnd/images/details_close.png') no-repeat center center;
+}
+
+
+.table-bordered > thead > tr > th, .table-bordered > thead > tr > td {
+    border-bottom-width: 2px;
+    background: #0989AE;
+}
+
+th {
+	 color: white;
+    font-weight: bold;
+    text-align: -internal-center;
+}
