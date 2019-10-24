@@ -6,7 +6,6 @@ import java.util.List;
 import javax.naming.directory.Attribute;
 import javax.naming.directory.Attributes;
 
-import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ldap.NamingException;
 import org.springframework.ldap.core.AttributesMapper;
@@ -16,7 +15,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -32,7 +30,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class CustomLoginProvider implements AuthenticationProvider {
 	
-	private static Logger logger = LoggerFactory.getLogger(CustomLoginProvider.class);
     
 	    
 	@Override
@@ -55,10 +52,10 @@ public class CustomLoginProvider implements AuthenticationProvider {
     	    	
     	    	return auth;    			
     		} else {
-    			logger.error("Password incorrecto");    			
+    			//logger.error("Password incorrecto");    			
     		}
     	} else {
-    		logger.error("Usuario incorrecto");
+    		//logger.error("Usuario incorrecto");
     	}
 		return null;
 	}

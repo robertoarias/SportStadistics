@@ -9,7 +9,6 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
 import org.jboss.vfs.VFS;
 import org.jboss.vfs.VirtualFile;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,8 +29,6 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 //@PropertySource(value={"file:c:\\roles.json"}, factory=JSONRolesConfigReader.JsonLoader.class)
 public class JSONRolesConfigReader {
 	
-	private static Logger logger = Logger.getLogger(JSONRolesConfigReader.class);
-	
 	//Devuelve el mapa de usuarios
 	public static  Map<String,Object> getRolesConfig()
 	{
@@ -47,11 +44,8 @@ public class JSONRolesConfigReader {
 			 URL resourceUrl = JsonLoader.url;				
 			 if(resourceUrl!=null)
 			 {
-				 logger.debug("URL to write: "+resourceUrl.toString());
-				 logger.debug("URL URI: "+resourceUrl.toURI().toASCIIString());
 
 			 }else{
-				 logger.error("URL is null");
 			 }	
 			
 			 VirtualFile vFile = VFS.getChild(resourceUrl.toURI());//org.jboss.vfs.VFS.getChild(aFilePath);
@@ -60,9 +54,7 @@ public class JSONRolesConfigReader {
 			 if(vFile!=null && fileNameDecodedTmp!=null)
 			 {
 					
-				 logger.debug("URL URI: "+fileNameDecodedTmp.toASCIIString());
 			 }else{
-				 logger.error("vFile is null");
 			 }
 			
 			 File file = new File(fileNameDecodedTmp);
