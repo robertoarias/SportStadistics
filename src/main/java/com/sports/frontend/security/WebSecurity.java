@@ -32,18 +32,9 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 		 .antMatchers("/images/**").permitAll()		 
 		 .mvcMatchers("/login").hasAnyRole("EDITOR,ADMIN,READONLY,UNAUTH,USERMGR,MASTER")
 		 .mvcMatchers("/").hasAnyRole("EDITOR,ADMIN,READONLY,USERMGR,MASTER")
-		 .mvcMatchers("/ajax/esquemas").hasAnyRole("EDITOR,ADMIN,READONLY")
-		 .mvcMatchers("/ajax/anchobandas").hasAnyRole("EDITOR,ADMIN,READONLY")
-		 .mvcMatchers("/edit").hasAnyRole("EDITOR,ADMIN")
-		 .mvcMatchers("/ajax/cambiarEstado").hasAnyRole("EDITOR,ADMIN")
-		 .mvcMatchers("/ajax/eliminarCampana").hasAnyRole("EDITOR,ADMIN")		 
-		 .mvcMatchers("/admintools").hasAnyRole("ADMIN,USERMGR,MASTER")
-		 .mvcMatchers("/reports").hasAnyRole("EDITOR,ADMIN,READONLY")
-		 .mvcMatchers("/changepass").hasAnyRole("MASTER")
 		 .anyRequest().authenticated().and()
          .formLogin().failureUrl("/login?error").successForwardUrl("/").defaultSuccessUrl("/")
          .loginPage("/login").successHandler(new AuthSessionHandler(SESSION_TIMEOUT_MIN)).permitAll().and()
-         //.loginPage("/login").successHandler(new AuthSessionHandler(Integer.valueOf(config.getSession_timeout_minutes()))).permitAll().and()
          .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login?logout").permitAll();            
 	}
 	
