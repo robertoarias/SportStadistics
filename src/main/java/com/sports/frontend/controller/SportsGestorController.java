@@ -1,24 +1,24 @@
 package com.sports.frontend.controller;
 
-import java.util.List;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 
 
 @Controller("/")
 public class SportsGestorController {
 
-	private List<List<String>> paisesList=null;
-	private List<List<String>> clubesList=null;
-	
 	@RequestMapping("/")
-	public String index_(Model model, Authentication authentication)
+	public String index_()
 	{			
-		return "index";		
+		return "index";	
 	}	
 	
 
+	@RequestMapping(value="/login",method=RequestMethod.GET)
+	  public String login() {
+	    return "login";
+	 }
+	
 }
