@@ -1,1 +1,1 @@
-web: java -jar target/SportsGestor.jar
+web: java -Dserver.port=$PORT -jar target/SportsGestor.jar
